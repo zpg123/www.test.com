@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-CN"/>
+<title>查看完整电话 - mymps.com.cn</title>
+<style>
+body{ font-family:microsoft yahei; font-size:14px; color:#999;}
+.clear{clear:both;height:8px;visibility:hidden;overflow:hidden}
+.clearfix{clear:both;visibility:hidden;overflow:hidden}
+.ul{ margin:20px;}
+.number{ padding-left:60px; height:70px;border-bottom:1px #eeeeee solid; background:url(template/default/images/information/seetel.gif) 0 0 no-repeat;}
+.number span{ width:380px; height:70px;}
+.number .num{ font-weight:bold; color:#FF4466; font-size:18px;}
+.wechat{ margin-top:10px; padding-left:60px; height:80px;background:url(template/default/images/information/seewx.gif) 0 0 no-repeat;}
+.wechat img{border:1px #e6e6e6 solid;}
+</style>
+</head>
+<body>
+<div class="ul">
+    <div class="number">
+    	<span class="num"><?=$tel?> <a style="font-size:12px; font-weight:100; color:#666; text-decoration:none;" target="_blank" href="<?=$mymps_global[SiteUrl]?>/posthistory.php?tel=<?=$tel_base64?>">[查看发帖记录]</a></span>
+        <div class="clear"></div>
+        <span>联系时请说是在<?=$mymps_global[SiteName]?>看到的, 谢谢</span>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <div class="wechat">
+    	<span>微信扫一扫，快速拨打电话</span>
+        <div class="clear"></div>
+        <span><img src="<?=$mymps_global[SiteUrl]?>/qrcode.php?url=<?=$url?>&size=4" border="0"></span>
+        <div class="clear"></div>
+        <div class="clear"></div>
+    </div>
+</div>
+</body>
+</html>

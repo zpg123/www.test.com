@@ -1,0 +1,1 @@
+function courseHover(){$(".newcourse .bdd li").hover(function(){$(this).find("p").animate({height:"95px"});$(this).find("p").addClass("active");$(this).find(".img i").addClass("on")},function(){$(this).find("p").animate({height:"25px"});$(this).find("p").removeClass("active");$(this).find(".img i").removeClass("on")})}$(document).ready(function(){courseHover()});

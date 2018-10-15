@@ -1,0 +1,14 @@
+﻿MYMPS5.8安装步骤：
+1，将mymps程序文件上传至服务器空间上（LINUX服务器注意二进制上传）
+2，在浏览器执行 http://你的域名/install/index.php 进入安装
+
+环境要求：
+php5.2 + mysql5 + zend optimiser
+php5.3/5.4 + mysql5 + zend loader
+
+其他说明：
+团购和优惠券和商家以及商品插件默认是自动安装的，可以在后台扩展 -》 插件设置里禁用
+
+
+
+                                                                                                             微网世界：www.vwshijie.com

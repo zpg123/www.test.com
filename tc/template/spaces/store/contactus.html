@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>联系我们-{$store[tname]}-{$mymps_global[SiteName]}</title>
+<link href="{$mymps_global[SiteUrl]}/template/spaces/store/css/{$store[template]}.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+
+{template header}
+<div class="content">
+	{template sider}
+	<div class="cright">
+		<div class="box">
+        	<div class="tit"><span>机构资料</span></div>
+			<div class="contactustop">
+				<ul>
+				<li><span class="cl">联系人：</span><span class="cr">{$store[cname]}</span></li>
+
+				<li><span class="cl">联系电话：</span><span class="cr">{$store[tel]}</span></li>
+
+				<li><span class="cl">机构地址：</span><span class="cr">{$store[address]}</span></li>
+                
+                <li><span class="cl">乘车路线：</span><span class="cr">{$store[busway]}</span></li>
+				</ul>
+			</div>
+            
+            <div class="map" style=" margin-left:20px; margin-bottom:30px;">
+			<iframe margin="0" src="{$mymps_global[SiteUrl]}/map.php?title={$store[tname]}&isshow=1&p={$store[mappoint]}&width=910&height=420" width="930" height="440" frameborder="0"></iframe> 
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clear15"></div>
+{template footer}
+</body>
+</html>

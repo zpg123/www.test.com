@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".titup").hover(function(){$(".cont").show()},function(){$(".cont").hide()});$(".cont").hover(function(){$(this).show()},function(){$(this).hide()})});

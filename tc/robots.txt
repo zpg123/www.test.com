@@ -1,0 +1,8 @@
+#
+# robots.txt for mymps
+# Version 5.8
+#
+
+User-agent: *
+
+Disallow: /m/

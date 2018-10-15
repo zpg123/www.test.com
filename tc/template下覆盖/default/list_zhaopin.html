@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="{$mymps_global[SiteUrl]}/template/default/js/uaredirect.js" type="text/javascript"></script>
+<script type="text/javascript">uaredirect("{$mymps_global[SiteUrl]}/m/index.php?mod=category&catid={$catid}");</script>
+<meta name="keywords" content="{$cat[keywords]}" />
+<meta name="description" content="{$cat[description]}" />
+<title>{$page_title}</title>
+<link rel="shortcut icon" href="{$mymps_global[SiteUrl]}/favicon.ico" />
+<link rel="stylesheet" href="{$mymps_global[SiteUrl]}/template/default/css/global.css" />
+<link rel="stylesheet" href="{$mymps_global[SiteUrl]}/template/default/css/style.css" />
+<link rel="stylesheet" href="{$mymps_global[SiteUrl]}/template/default/css/category.css" />
+<link rel="stylesheet" href="{$mymps_global[SiteUrl]}/template/default/css/pagination2.css" />
+<script src="{$mymps_global[SiteUrl]}/template/default/js/global.js" type="text/javascript"></script>
+<script src="{$mymps_global[SiteUrl]}/template/default/js/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body class="{$mymps_global[cfg_tpl_dir]} full bodybg{$mymps_global[cfg_tpl_dir]}{$mymps_global[bodybg]}">
+{mytemplate inc_head}
+<div class="bodybgcolor">
+<div class="body1000">
+	<div class="clear"></div>
+	<div class="location">
+		{$location}
+	</div>
+	<div class="clear"></div>
+	<div class="wrapper">
+		{mytemplate list_select}
+	</div>
+	<div class="clear"></div>
+	<div style="body1000">
+		<div class="new_listhd">
+			<div class="listhdleft">
+				<div><a href="#" class="currentr"><span></span>{$mymps_global[SiteCity]}{$page_title_extra}{$cat[catname]}信息</a></div>
+			</div>
+			<div class="listhdcenter">
+				信息总数：<span>{$rows_num}</span> ，您知道吗？置顶发布的信息可使成交率提高50%！
+			</div>
+			<div class="listhdright">
+				<a href="{$mymps_global[SiteUrl]}/{$mymps_global[cfg_postfile]}?catid={$cat[catid]}" target="_blank">免费发布{$mymps_global[SiteCity]}{$cat[catname]}信息>></a>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div id="ad_intercatdiv"></div>
+		<div class="infolists">
+        <div id="ad_interlistad_top"></div>
+        <div class="clearfix"></div>
+		<div class="list_zpqz">
+		<ul>
+        <!--{loop $info_list $mymps}-->
+		<div class="hover {if $mymps[upgrade_type]>1}ding{/if}">
+		<span class="ltitle">
+		<a href="{$mymps_global[SiteUrl]}{$mymps[uri]}" target="_blank" style="{if $mymps[ifred] == 1}color:red;{/if} {if $mymps[ifbold] == 1}font-weight:bold;{/if}" title="{$mymps[title]}">{echo cutstr($mymps[title],18)}</a>
+        {if $mymps[img_count]}<span class="img_count">{$mymps[img_count]}图</span>{/if}{if $mymps[info_level] == 2}<span class="tuijian">荐</span>{/if}{if $mymps[certify] == 1}<span class="certify">认证</span>{/if}
+        <div class="inforbox">
+          <div class="arrow"> <em></em> <span></span> </div>
+          <div class="tipsbox">
+            <h3>{echo cutstr($mymps[company],28)}</h3>
+            <ul class="lists">
+              <li> <span>薪资待遇：</span> <font color="#F70">{if $mymps[day_salary]}{$mymps[day_salary]}{else}{$mymps[salary]}元{/if}</font> </li>
+              <li> <span>工作地点：</span> {$mymps[areaname]} </li>
+              {if $mymps[work_life]}<li> <span>工作经验：</span> {$mymps[work_life]} </li>{/if}
+              {if $mymps[education]}<li> <span>学历要求：</span> {$mymps[education]} </li>{/if}
+              {if $mymps[job]}<li> <span>招聘职位：</span> {$mymps[job]} </li>{/if}
+              {if $mymps[property]}<li> <span>公司性质：</span> {$mymps[property]}</li>{/if}
+              {if $mymps[fuli]}<li style="width:400px;">{$mymps[fuli]}</li>{/if}
+            </ul>
+            <dl class="content">
+              {echo cutstr($mymps[content],200,'...')}
+            </dl>
+            <dl class="warning">
+              <strong>{$mymps_global[SiteName]}提醒：</strong> 在签订合同之前，以各种理由收取非正规费用（押金、服装费、报名费、体检费、要求购买充值卡等）均有骗子嫌疑，请提高警惕。
+            </dl>
+            </div>
+          </div>
+        </span>
+        <span class="ltime">{echo get_format_time($mymps[begintime])}</span>
+        <span class="larea">{$mymps[areaname]}</span>
+		<span class="lsalary">{if $mymps[day_salary]}{$mymps[day_salary]}{else}{$mymps[salary]}元{/if}</span>
+        <span class="lcompany">{echo cutstr($mymps[company],28)}&nbsp;</span>
+		</div>
+        
+		<!--{/loop}-->
+		</ul>
+		</div>
+         <div class="clearfix"></div>
+		<div id="ad_interlistad_bottom"></div>
+		<div class="clear"></div>
+		<div class="pagination2">{$pageview}</div>
+		<div class="clear"></div>
+		</div>
+	</div>
+    
+    {mytemplate list_foot}
+	{mytemplate inc_foot}
+</div>
+</div>
+</body>
+</html>
+<script>$(function(){$(".ltitle").hover(function(){$(this).find(".inforbox").show()},function(){$(this).find(".inforbox").hide()})});</script>

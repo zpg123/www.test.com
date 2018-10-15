@@ -1,0 +1,1 @@
+$('#foots').html('Powered by <a class="copyrights" href="http://www.mymps.com.cn" target="_blank">mymps</a> <a class="copyversions" href="http://bbs.mymps.com.cn">5.8E GBK</a>');var url = '/../javascript.php?part=iflogin&url='+window.location.href;$.get(url,function(data){$('#iflogin').html(data);});$('#gzh img').error(function(){$("#gzh").hide();$("#sjfw").show();});

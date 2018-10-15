@@ -1,0 +1,43 @@
+{mytemplate inc_header}
+<div class="body1000">
+<div class="daohang_con">
+    <div class="categories">
+        <dl id="infomenu">
+        <dt class="titup"><b>信息分类</b></dt>
+        <dd class="cont" style="display:none;">
+        <ul>
+        <!--<script type="text/javascript" src="{$mymps_global[SiteUrl]}/data/caches/cats_js.php"></script>-->
+        <!--{php $global_cat = get_categories_tree(0,'category');}-->
+        <!--{loop $global_cat $mymps}-->
+        <li>
+        <em><a href="{$mymps[uri]}" style="color:{$mymps[color]}" target="_blank">{$mymps[catname]}</a></em>
+        <dl>
+        <dt><b></b></dt>
+        <dd>
+        <!--{loop $mymps[children] $w}-->
+        <a href="{$w[uri]}" style="color:{$w[color]}" target="_blank" title="{$w[catname]}">{$w[catname]}</a>
+        <!--{/loop}-->
+        </dd>
+        </dl>
+        </li>
+        <!--{/loop}-->
+        </ul>
+        </dd>
+        </dl>
+    </div>
+    <div class="daohang">
+        <ul>
+            <li><a href="{$mymps_global[SiteUrl]}" id="index">首页</a></li>
+            <!--{php $navurl_header = mymps_get_navurl('header',15);}-->
+            <!--{loop $navurl_header $k $mymps}-->
+            <li><a {if $mymps[flag] == $cat[catid] || $mymps[flag] == $cat[parentid]}class="current"{/if} target="{$mymps[target]}" id="{$mymps[flag]}" href="{if $mymps[flag] != 'outlink' && $mymps[flag] != 'corp'}{/if}{$mymps[url]}"><font color="{$mymps[color]}">{$mymps[title]}</font><sup class="{$mymps[ico]}"></sup></a></li>
+            <!--{/loop}-->
+        </ul>
+    </div>
+</div>
+<div class="clearfix"></div>
+<!--头部通栏广告开始-->
+<div id="ad_header"></div>
+<!--头部通栏广告结束-->
+<div class="clearfix"></div>
+<script>loadDefault(['category','category_select'])</script>

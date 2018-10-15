@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="index_page">
+<head>
+	{template header}
+	<title>{$cat[catname]} - 热点资讯 - {$mymps_global[SiteName]}</title>
+	<link type="text/css" rel="stylesheet" href="template/css/global.css">
+	<link type="text/css" rel="stylesheet" href="template/css/style.css">
+    <link type="text/css" rel="stylesheet" href="template/css/news.css">
+    <script>window['current'] = '{$cat[catname]}';</script>
+</head>
+
+<body class="{$mymps_global[cfg_tpl_dir]}">
+<div class="wrapper">
+
+    {template header_search}
+    <div class="clearfix"></div>
+    <div class="news">
+    
+    <div class="select_01" id="wrapper2">
+        <ul class="tab-hd" id="scroller2">
+        <!--{loop $rootchannel $mymps}-->
+            <li class="{if $mymps[catid] == $catid}current{/if} item"><a href="index.php?mod=news&catid={$mymps[catid]}">最新</a></li>
+            <!--{loop $mymps[children] $w}-->
+            <li class="{if $w[catid] == $catid}current{/if} item"><a href="index.php?mod=news&catid={$w[catid]}">{$w[catname]}</a></li>
+            <!--{loopelse}-->
+            <script>$("#wrapper2").hide();</script>
+            <!--{/loop}-->
+        <!--{/loop}-->
+        </ul>
+    </div>
+	<script type="text/javascript" src="template/js/iscroll-probe.js"></script>
+    <script>
+    (function($){
+        var w_w = $(window).width();
+        $('#scroller2').css('width',(90*$('#scroller2').find('li').length)+40+'px'); 
+        window['myScroll2'] = new IScroll('#wrapper2', {
+            scrollX: true,
+            scrollY: false,
+            click:true,
+            keyBindings: true
+        });
+    })(jQuery);
+    </script>
+	
+    <div class="clearfix"></div>
+        
+    <div class="mod_02" id="myPicsrc">
+                <div class="bd tab-cont">
+                    <ul class="list_normal list_news">
+                        <!--{loop $news $mymps}-->
+                        <li class="img">
+                            <a href="{$mymps[uri]}" class="link">
+                            <p class="img"><img src="{$mymps[imgpath]}" onerror="this.src='{$mymps_global[SiteUrl]}/images/nophoto.jpg'" /></p>
+                            <p class="tit"{if $mymps[iscommend] ==1}style="color:red"{/if}>{$mymps[title]}</p>
+                            <p class="txt">{echo cutstr($mymps[content],60,'...')}</p>
+                            <p class="hot po_ab">{echo GetTime($mymps[begintime],'m-d')}</p>
+                            </a>
+                        </li>
+                        <!--{/loop}-->
+                    </ul>
+                </div>
+                
+            </div>
+    </div>
+    {if $news}
+	<div class="pager">
+    {$pageview}
+	</div>
+	{/if}
+</div>
+{template footer}
+
+</body>
+</html>

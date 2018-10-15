@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="index_page">
+<head>
+{template header}
+<title>修改密码 - {$mymps_global[SiteName]}</title>
+<link type="text/css" rel="stylesheet" href="template/css/global.css">
+<link type="text/css" rel="stylesheet" href="template/css/style.css">
+<link type="text/css" rel="stylesheet" href="template/css/member_new.css">
+<script>window['current'] = '修改密码';</script>
+<script type="text/javascript">function chkSubmit(){if($("#userpwd").val()==''||$("#userpwd").val().length<6||$("#userpwd").val().length>15){alert('请输入6-15位新密码');$("#userpwd").focus();return false}if($("#userpwd").val()!=$("#reuserpwd").val()){alert('两次密码输入不相同');$("#reuserpwd").focus();return false}}</script>
+</head>
+
+<body class="{$mymps_global[cfg_tpl_dir]}">
+<div class="wrapper">
+
+{template header_search}
+
+<div class="dl_nav">
+    <span>
+        <a href="index.php">首页</a>&gt;<a href="index.php?mod=member">会员中心</a>&gt;<a href="index.php?mod=member&action=editpwd">修改密码</a>
+    </span>
+</div>
+
+<form name="form1" action="?mod=member&action=editpwd&dopost=1" method="post" onSubmit="return chkSubmit();">
+<input name="dopost" value="1" type="hidden">
+<div class="tabItem tab-cont" style="display:block;">
+ <div class="inp_Itembox">
+  <dl class="cfix">
+   <dt>用户名</dt>
+   <dd>{$row[userid]}</dd>
+  </dl>
+<!--  <dl class="cfix">
+   <dt>QQ登录</dt>
+   <dd>
+   <a href=""  style="color:#36c;">绑定QQ登录</a>
+   <a href=""  style="color:#36c;">更改QQ登录</a></dd>
+  </dl>
+  <dl class="cfix">
+   <dt>微信登录</dt>
+   <dd>
+   <a href=""  style="color:#36c;">绑定微信登录</a>
+   <a href=""  style="color:#36c;">更改微信登录</a></dd>
+  </dl>-->
+  <dl class="cfix">
+   <dt>新密码</dt>
+   <dd><input type="password" id="userpwd" name="userpwd" placeholder="6-15个字符" /></dd>
+  </dl>
+  <dl class="cfix">
+   <dt>重复密码</dt>
+   <dd><input type="password" id="reuserpwd" name="reuserpwd" placeholder="再次输入新的密码"  /></dd>
+  </dl>
+ </div>
+</div>
+ <button type="submit" class="save">保 存</button>
+</form>
+
+</div>
+{template footer}
+</body>
+</html>

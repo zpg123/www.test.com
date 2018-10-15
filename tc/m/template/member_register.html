@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="index_page">
+
+	<head>
+		{template header}
+		<title>会员注册 - {$mymps_global[SiteName]}</title>
+		<link type="text/css" rel="stylesheet" href="template/css/global.css">
+		<link type="text/css" rel="stylesheet" href="template/css/style.css">
+		<link type="text/css" rel="stylesheet" href="template/css/login.css">
+		<script>
+			window['current'] = '会员注册';
+		</script>
+		<script>
+			function checksubmit(o) {
+				<!--{if $mymps_global[cfg_member_verify]==4}-->
+				var mobile=$("#mobile");
+				if(mobile.val()===""){alert("请输入手机号码！");
+				mobile.focus();removewarn();$("#loginMobileLi").css('border-color','#FF0000');
+				return false}
+				<!--{else}-->
+				var userid=$("#userid");
+				if(userid.val()===""){
+					alert("请输入登录账号！");
+					userid.focus();removewarn();$("#loginUserNameLi").css('border-color','#FF0000');
+					return false
+				}else{
+					var lenth=lenthString($("#userid").val());
+					if(lenth<3||lenth>15){alert('账号不得小于3个字符或大于15个字符！');
+					$("#userid").focus();removewarn();$("#loginUserNameLi").css('border-color','#FF0000');
+					return false}}
+				<!--{/if}-->
+				if($("#userpwd").val()===""){alert("请输入登录密码！");
+				$("#userpwd").focus();removewarn();$("#loginPasswordLi").css('border-color','#FF0000');
+				return false;}
+				if($("#reuserpwd").val()===""){alert("请再次输入登录密码！");
+				$("#reuserpwd").focus();removewarn();$("#loginRePasswordLi").css('border-color','#FF0000');
+				return false;}
+				if($("#userpwd").val()!=$("#reuserpwd").val()){alert("两次密码输入不相同！");
+				$("#reuserpwd").focus();removewarn();$("#loginRePasswordLi").css('border-color','#FF0000');
+				return false;}
+				if($("#email").val()===""){alert("请输入电子邮箱地址！");
+				$("#email").focus();removewarn();$("#loginEmailLi").css('border-color','#FF0000');
+				return false;}
+				<!--{if $authcodesettings[register]==1}-->
+				if($('#checkcode').val()===""){alert("请输入验证码！");$("#checkcode").focus();removewarn();$("#loginCheckcodeLi").css('border-color','#FF0000');return false;}<!--{/if}-->return true}function removewarn(){$(".passport-login-input-li").css('border-color','#c0c1c2')}function chk_remember(){var url='../javascript.php?part=chk_remember&value='+$("#userid").val();if($("#userid").val()){$.get(url,function(data){if(data==='success'){return true}else{alert(data);$("#userid").focus();removewarn();$("#loginUserNameLi").css('border-color','#FF0000');return false}})}}function chk_remail(){var url='../javascript.php?part=chk_remail&value='+$("#email").val();if($("#email").val()){chkEmail($("#email").val());$.get(url,function(data){if(data==='success'){return true}else{alert(data);$("#email").focus();removewarn();$("#loginEmailLi").css('border-color','#FF0000');return false}})}}function chk_remobile(){var url='../javascript.php?part=chk_remobile&value='+$("#email").val();if($("#mobile").val()){chkMobile($("#mobile").val());$.get(url,function(data){if(data==='success'){return true}else{alert(data);$("#mobile").focus();removewarn();$("#loginMobileLi").css('border-color','#FF0000');return false}})}}function chk_authcode(){var checkcode=$("#checkcode").val();var url='../javascript.php?part=chk_authcode&value='+checkcode;if(checkcode){$.get(url,function(data){if(data==='success'){return true}else{alert(data);$("#checkcode").focus();removewarn();$("#loginCheckcodeLi").css('border-color','#FF0000');return false}})}}function chk_smsauthcode(){var checkcode=$("#smscheckcode").val();var url='../javascript.php?part=chk_smsauthcode&value='+checkcode;if(checkcode){$.get(url,function(data){if(data==='success'){return true}else{alert(data);$("#smscheckcode").focus();removewarn();$("#loginSmsCheckcodeLi").css('border-color','#FF0000');return false}})}}function regType(type){if(type==0){$("#regPerson").addClass('current');$("#regPerson").addClass('current1');$("#regCorp").removeClass('current');$("#regCorp").removeClass('current3');$("#reg_corp").val('0')}else if(type==1){$("#regPerson").removeClass('current');$("#regPerson").removeClass('current1');$("#regCorp").addClass('current');$("#regCorp").addClass('current3');$("#reg_corp").val('1')}}
+		</script>
+	</head>
+
+	<body class="{$mymps_global[cfg_tpl_dir]}">
+		<div class="wrapper">
+			{template header_search} {if $mymps_global[cfg_if_corp] == 1}
+			<div class="select_02 select_02_{$mymps_global[cfg_tpl_dir]}">
+				<ul>
+					<li class="item current current1" id="regPerson">
+						<a href="javascript:void(0);" onClick="regType(0);">个人注册</a>
+					</li>
+					<li class="item" id="regCorp">
+						<a href="javascript:void(0);" onClick="regType(1);">机构注册</a>
+					</li>
+				</ul>
+			</div>
+			{/if}
+			<div class="m311 log_reg_box">
+				<div id="logRegTabCon">
+					<div class="log_reg_item">
+						<form id="form1" method="post" action="index.php?mod=register&action=register" onSubmit="return checksubmit(this);">
+							<input name="reg_corp" type="hidden" value="0" id="reg_corp">
+							<input type="hidden" value="{$mixcode}" name="mixcode" />
+							<ul id="pptul" class="passport-login-input-ul">
+
+								<!--{if $mymps_global[cfg_member_verify] == 4}-->
+								<li id="loginMobileLi" class="passport-login-input-li">
+									<span class="passport-login-input-span">手机</span>
+									<input type="text" onBlur="chk_remobile()" name="mobile" id="mobile" size="20" maxlength="15" class="passport-login-input passport-login-input-username" placeholder="请输入手机号">
+								</li>
+								<!--{else}-->
+								<li id="loginUserNameLi" class="passport-login-input-li">
+									<span class="passport-login-input-span">用户名</span>
+									<input type="text" onBlur="chk_remember()" name="userid" id="userid" size="20" maxlength="15" class="passport-login-input passport-login-input-username" placeholder="请输入用户名（3-15字节以内）">
+								</li>
+								<!--{/if}-->
+								<li id="loginPasswordLi" class="passport-login-input-li">
+									<span class="passport-login-input-span">密码</span>
+									<input type="password" name="userpwd" id="userpwd" size="20" maxlength="16" class="passport-login-input passport-login-input-password" placeholder="请输入密码（6-16位）">
+								</li>
+								<li id="loginRePasswordLi" class="passport-login-input-li">
+									<span class="passport-login-input-span">密码确认</span>
+									<input type="password" name="reuserpwd" id="reuserpwd" size="20" maxlength="16" class="passport-login-input passport-login-input-password" placeholder="再次输入密码">
+								</li>
+								<!--{if $mymps_global[cfg_member_verify] != 4}-->
+								<li id="loginEmailLi" class="passport-login-input-li">
+									<span class="passport-login-input-span">Email</span>
+									<input type="text" onBlur="chk_remail()" name="email" id="email" size="20" class="passport-login-input passport-login-input-username" placeholder="请输入Email地址" maxlength="75">
+								</li>
+								<!--{/if}-->
+								{if $authcodesettings[register] == 1}
+								<script type="text/javascript" src="template/js/sendsms.js"></script>
+								<li id="loginCheckcodeLi" class="passport-login-input-li">
+									<span class="passport-login-input-span">验证码</span>
+									<input type="text" onBlur="chk_authcode()" name="checkcode" id="checkcode" class="passport-login-input passport-login-input-username" style="width:130px;" placeholder="请输入验证码" size="20" maxlength="75">
+								</li>
+								<div style="margin-top:10px; text-align:center">
+									<img src="{$mymps_global[SiteUrl]}/{$mymps_global[cfg_authcodefile]}?mod=m" alt="看不清，请点击刷新" align="absmiddle" style="cursor:pointer; border:1px #ddd solid;" onClick="this.src=this.src+'?'" />
+								</div>
+								{else}
+								<script type="text/javascript" src="template/js/sendsms2.js"></script>
+								{/if}
+								<!--{if $mymps_global[cfg_member_verify] == 4}-->
+								<!--注释手机验证码-->
+								<!--<li id="loginSmsCheckcodeLi" class="passport-login-input-li">
+							<span class="passport-login-input-span">手机验证码</span>
+							<input style="float:left; width:60px;" type="text" onBlur="chk_smsauthcode()" name="smscheckcode" id="smscheckcode" size="6" class="passport-login-input-mob" placeholder="验证码" maxlength="6">
+                            <input style="display:block;" value="发送手机验证码" type="button" name="sendmsg" onclick="sendmsgbutton()" id="sendmsg" class="disabled">
+						</li>-->
+								<!--{/if}-->
+								<li id="loginButtonLi" class="passport-login-input-li">
+									<span class="passport-login-input-span" jqmoldstyle="block" style="display: none;">&nbsp;</span>
+									<label><input type="submit" name="button"  id="button" value="注册" class="passport-login-button btn_log" style="color: rgb(255, 254, 254);"></label>
+								</li>
+							</ul>
+						</form>
+					</div>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+		</div>
+		{template footer}
+	</body>
+
+</html>

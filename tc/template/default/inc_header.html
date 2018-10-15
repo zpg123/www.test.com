@@ -1,0 +1,65 @@
+<script type="text/javascript">var current_domain="{$mymps_global[SiteUrl]}"; </script>
+<div class="bartop">
+	<div class="barcenter">
+		<div class="barleft">
+			<ul class="barcity">欢迎来到{$mymps_global[SiteName]}！</ul> 
+			<ul class="line"><u></u></ul>
+            <ul class="barcang"><a href="{$mymps_global[SiteUrl]}/desktop.php" target="_blank" title="点击右键，选择“目标另存为”，将此快捷方式保存到桌面即可">保存到桌面</a></ul>
+			<ul class="line"><u></u></ul>
+			<ul class="barpost"><a href="{$mymps_global[SiteUrl]}/{$mymps_global[cfg_postfile]}">快速发布信息</a></ul>
+			<ul class="line"><u></u></ul>
+			<ul class="bardel"><a href="{$mymps_global[SiteUrl]}/delinfo.php" rel="nofollow">修改/删除信息</a></ul>
+			<ul class="line"><u></u></ul>
+			<ul class="barwap"><a href="{$mymps_global[SiteUrl]}/mobile.php">手机浏览</a></ul>
+		</div>
+		<div class="barright" id="iflogin"><img src="{$mymps_global[SiteUrl]}/images/loading.gif" border="0" align="absmiddle"></div>
+	</div>
+</div>
+<div class="clear"></div>
+<!--顶部横幅广告开始-->
+<div id="ad_topbanner"></div>
+<!--顶部横幅广告结束-->
+<div class="clearfix"></div>
+<div class="logosearchtel">
+	<div class="weblogo"><a href="{$mymps_global[SiteUrl]}"><img src="{$mymps_global[SiteUrl]}{$mymps_global[SiteLogo]}" title="{$mymps_global[SiteName]}" border="0"/></a></div>
+    <!--<div class="webcity">
+    	<span>{if $city[cityname]}{echo cutstr($city[cityname],8,'...')}{else}总站{/if}</span><br><a>切换分站</a>
+    </div>-->
+    
+    <div class="postedit">
+		<a class="post" href="{$mymps_global[SiteUrl]}/{$mymps_global[cfg_postfile]}?catid={$catid}">免费发布信息</a>
+	</div>
+	<div class="websearch">
+    	<div class="s_ulA" id="searchType">
+            <ul>
+                <li name="s8" id="s8_information" onclick="show_tab('information');" class="current"><a href="javascript:void(0);">信息</a></li>
+				<li name="s8" id="s8_store" onclick="show_tab('store');" ><a href="javascript:void(0);">商家</a></li>
+                <li name="s8" id="s8_news" onclick="show_tab('news');" ><a href="javascript:void(0);">资讯</a></li>
+                <li name="s8" id="s8_goods" onclick="show_tab('goods');" ><a href="javascript:void(0);">商品</a></li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+		<div class="sch_t_frm">
+			<form method="get" action="{$mymps_global[SiteUrl]}/search.php?" id="searchForm" target="_blank">
+            <input type="hidden" id="searchtype" name="mod" value="information"/>
+			<div class="sch_ct">
+				<input type="text" class="topsearchinput" value="请输入关键词或分类名" name="keywords" id="searchheader" onmouseover="if(this.value==='请输入关键词或分类名'){this.value='';}" x-webkit-speech lang="zh-CN"/>
+			</div>
+			<div>
+				<input type="submit" value="搜 索" class="btn-normal"/>
+			</div>
+			</form>
+		</div>
+        <div class="clearfix"></div>
+        <!--{if $navurl_head = mymps_get_navurl('head',20)}-->
+        <div class="s_ulC">
+        <ul>
+        <!--{loop $navurl_head $k $mymps}-->
+        <li><a href="{$mymps[url]}" style="color:{$mymps[color]}" target="{$mymps[target]}" title="{$mymps[title]}">{$mymps[title]}<sup class="{$mymps[ico]}"></sup></a></li>
+        <!--{/loop}-->
+        </ul>
+        </div>
+        <!--{/if}-->
+	</div>
+</div>
+<div class="clear"></div>
